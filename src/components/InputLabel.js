@@ -7,9 +7,9 @@ const InputLabelContainer = styled.div`
     
 `
 const Label = styled.label`
-display: block;
-margin-bottom: 8px;
-font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;
 
 `
 const Input = styled.input`
