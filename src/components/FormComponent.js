@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Dropdown } from './Dropdown';
 import InputLabel from './InputLabel';
 import { Button } from "./Button";
+import { useState } from "react";
 
 const FormComponentContainer = styled.section`
 display: flex;
@@ -26,14 +27,24 @@ export const FormComponent = () => {
         'Mobile',
         'Inovação e Gestão'
       ]
+    const [nome, setNome] = useState('')
+    const [cargo, setCargo] = useState('')
+    const [imagem, setImagem] = useState('')
+    const [time, setTime] = useState('')
+
+    
+    const getSubmit = (event) => {
+        event.preventDefault()
+        console.log('Form was actived',nome, cargo, imagem, time);
+    }
     return (
         <FormComponentContainer>
-            <FormAction>
+            <FormAction onSubmit={getSubmit}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <InputLabel label="Nome:" placeholder={"Digite o seu nome"}/>
-                <InputLabel label="Cargo:" placeholder={"Digite o seu cargo"}/>
-                <InputLabel label="Imagem:" placeholder={"Informe o endereço da imagem"}/>
-                <Dropdown label={"Time:"} itens={times}/>
+                <InputLabel value={nome} aoAlterado={valor => setNome(valor)} required={true} label="Nome:" placeholder={"Digite o seu nome"}/>
+                <InputLabel value={cargo} aoAlterado={valor => setCargo(valor)} required={true} label="Cargo:" placeholder={"Digite o seu cargo"}/>
+                <InputLabel value={imagem} aoAlterado={valor => setImagem(valor)}required={false} label="Imagem:" placeholder={"Informe o endereço da imagem"}/>
+                <Dropdown label={"Time:"} itens={times} value={time} aoAlterado={valor => setTime(valor    )}/>
                 <Button>Criar card</Button>
             </FormAction>
         </FormComponentContainer>

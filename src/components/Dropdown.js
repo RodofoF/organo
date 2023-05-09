@@ -34,13 +34,16 @@ const SelectOption = styled.input`
     box-sizing: border-box;
 `
 export const Dropdown = (props) => {
+    const getDigitado = (event) => {
+        props.aoAlterado(event.target.value)
+    }
 
     return (
         <DropdownContainer>
             <Label htmlFor="">{props.label}</Label>
-            <select className="select" name="" id="">
+            <select onChange={getDigitado} value={props.value} className="select" name="" id="">
                 {props.itens.map(item => {
-                   return <option key={item} value="">{item}</option>
+                   return <option key={item}>{item}</option>
                 })}
             </select>
         </DropdownContainer>

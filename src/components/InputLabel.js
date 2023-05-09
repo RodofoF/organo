@@ -23,12 +23,18 @@ const Input = styled.input`
 `
 
 
-const InputLabel = ({label, placeholder }) =>{
+
+const InputLabel = (props) =>{
+    
+
+    const getDigitado = (event) => {
+        props.aoAlterado(event.target.value)
+    }
     return (
         <InputLabelContainer>
-            <Label htmlFor="">{label}</Label>
+            <Label htmlFor="">{props.label}</Label>
                 
-                <Input type="text" name="" id="" placeholder={placeholder}/>
+                <Input value={props.valor} onChange={getDigitado} type="text" name="" id="" required={props.required} placeholder={props.placeholder}/>
             
         </InputLabelContainer>
     )
